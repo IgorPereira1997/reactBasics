@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM  from "react-dom";
-// const user = {  }
 
-// //Optional Chaining
-// console.log(user?.address?.street);
+import App from './App';
 
 ReactDOM.render(
-  <h1 id="greetings">
-  <span>Olá, Mundo!</span>
-  </h1>, 
+  // <h1 id="greetings">
+  // <span>Olá, Mundo!</span>
+  // </h1>,
+  <App />,
   document.getElementById('root'),
 );
