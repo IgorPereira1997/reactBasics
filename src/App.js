@@ -1,15 +1,18 @@
 import React from "react";
 
-const category = 'Weekly posts';
+import Post from './Post';
+import Header from "./Header";
+
+const category = "Weekly Posts"
 const firstTitle = "News 01 Title";
 const firstSub = "News 01 Subs";
-import Post from './Post';
 
 function App(){
   return (
     <React.Fragment>
-      <h1>Igor's JStack Blog</h1>
+    <Header title="Igor's JStack Blog">
       <h2>{category}</h2>
+    </Header>
 
       <hr/>
 
