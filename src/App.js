@@ -26,7 +26,8 @@ function App(){
         id: Math.random(),
         title: `Title 0${prevState.length + 1}`,
         subtitle: `Subtitle 0${prevState.length + 1}`,
-        likes: Math.floor(Math.random() * 100)
+        likes: Math.floor(Math.random() * 100),
+        read: false
       }
     ]);
   }
