@@ -32,6 +32,13 @@ function App(){
     ]);
   }
 
+  function handleRemovePost(postId){
+    console.log("Removed post");
+    setPosts((prevState) => (
+      prevState.filter(post => post.id !== postId)
+    ));
+  }
+
   return (
     <React.Fragment>
     <Header title="New Major Title">
@@ -44,7 +51,9 @@ function App(){
         <Post
           key={post.id}
           likes={post.likes}
+          onRemove={handleRemovePost}
           post={{
+            id: post.id,
             title: post.title,
             subtitle: post.subtitle
           }}
