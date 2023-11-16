@@ -7,6 +7,14 @@ const category = "Weekly Posts"
 const firstTitle = "News 01 Title";
 const firstSub = "News 01 Subs";
 
+const posts = [
+  {title: 'Title 01', subtitle: "Subtitle 01", likes: 20},
+  {title: 'Title 02', subtitle: "Subtitle 02", likes: 11},
+  {title: 'Title 03', subtitle: "Subtitle 03", likes: 67},
+  {title: 'Title 04', subtitle: "Subtitle 04", likes: 43},
+  {title: 'Title 05', subtitle: "Subtitle 05", likes: 55},
+]
+
 function App(){
   return (
     <React.Fragment>
@@ -16,41 +24,16 @@ function App(){
 
       <hr/>
 
-      <Post
-        likes={20}
-        post={{
-          title: firstTitle,
-          subtitle: firstSub
-        }}
-      />
-      <Post
-        likes={30}
-        post={{
-          title: firstTitle,
-          subtitle: firstSub
-        }}
-      />
-      <Post
-        likes={11}
-        post={{
-          title: firstTitle + "2",
-          subtitle: firstSub + "2"
-        }}
-      />
-      <Post
-        likes={37}
-        post={{
-          title: firstTitle + "3",
-          subtitle: firstSub + "3"
-        }}
-      />
-      <Post
-        likes={52}
-        post={{
-          title: firstTitle + "4",
-          subtitle: firstSub + "4"
-        }}
-      />
+      {posts.map( post =>(
+        <Post
+          key={post.title}
+          likes={post.likes}
+          post={{
+            title: post.title,
+            subtitle: post.subtitle
+          }}
+        />
+      ))}
 
     </React.Fragment>
   );
