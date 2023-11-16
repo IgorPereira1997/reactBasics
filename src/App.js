@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 
 import Post from './Post';
 import Header from "./Header";
+import { ThemeProvider } from "./ThemeContext";
 
 const category = "Weekly Posts"
-const firstTitle = "News 01 Title";
-const firstSub = "News 01 Subs";
 
 function App(){
 
   //UseState handles the recreation of UI after a change in a variable that it
   //is controlling
   const [posts, setPosts] = useState([
-    {id: Math.random(), title: 'Title 01', subtitle: "Subtitle 01", likes: 20},
-    {id: Math.random(), title: 'Title 02', subtitle: "Subtitle 02", likes: 11},
-    {id: Math.random(), title: 'Title 03', subtitle: "Subtitle 03", likes: 67},
-    {id: Math.random(), title: 'Title 04', subtitle: "Subtitle 04", likes: 43},
-    {id: Math.random(), title: 'Title 05', subtitle: "Subtitle 05", likes: 55},
+    {id: Math.random(), title: 'Title 01', subtitle: "Subtitle 01", likes: 20, read: false},
+    {id: Math.random(), title: 'Title 02', subtitle: "Subtitle 02", likes: 11, read: true},
+    {id: Math.random(), title: 'Title 03', subtitle: "Subtitle 03", likes: 67, read: false},
+    {id: Math.random(), title: 'Title 04', subtitle: "Subtitle 04", likes: 43, read: false},
+    {id: Math.random(), title: 'Title 05', subtitle: "Subtitle 05", likes: 55, read: false},
   ]);
 
   function handleRefresh(){
@@ -40,27 +39,22 @@ function App(){
   }
 
   return (
-    <React.Fragment>
-    <Header title="New Major Title">
-      <h2>{category} <button onClick={handleRefresh}>Update</button></h2>
-    </Header>
+    <ThemeProvider>
+      <Header title="New Major Title">
+        <h2>{category} <button onClick={handleRefresh}>Update</button></h2>
+      </Header>
 
       <hr/>
 
       {posts.map( post =>(
         <Post
           key={post.id}
-          likes={post.likes}
           onRemove={handleRemovePost}
-          post={{
-            id: post.id,
-            title: post.title,
-            subtitle: post.subtitle
-          }}
+          post={post}
         />
       ))}
 
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
 

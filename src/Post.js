@@ -1,20 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import PostHeader from "./PostHeader";
 export default function Post(props){
-  const { post } = props;
   return(
     <React.Fragment>
       <article>
-        <strong>{(post?.title) != null ? (post?.title) : "News' Title"}</strong>
-        <span>&nbsp;</span>
-        <button onClick={() => props.onRemove(props.post.id)}>
-          Remover
-        </button>
+        <PostHeader
+          post={{
+            title: props.post.title,
+            read: props.post.read,
+            id: props.post.id
+          }}
+          onRemove={props.onRemove}
+        />
         <br/>
-        <small>{(post?.subtitle) ?? "News' Subtitle"}</small>
+        <small>{(props?.post.subtitle) ?? "News' Subtitle"}</small>
         <br/>
-        Likes: {props.likes ?? 0}
+        Likes: {props.post.likes ?? 0}
       </article>
       <br/>
     </React.Fragment>
@@ -22,11 +25,12 @@ export default function Post(props){
 }
 
 Post.propTypes = {
-  likes: PropTypes.number.isRequired,
   onRemove: PropTypes.func.isRequired,
   post: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
+    read: PropTypes.bool.isRequired
   }).isRequired
 }
