@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import PostHeader from "./PostHeader";
 
 import styles from './Post.scss';
+
 export default function Post(props){
   return(
     <React.Fragment>
