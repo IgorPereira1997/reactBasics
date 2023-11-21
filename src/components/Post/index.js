@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import PostHeader from "./PostHeader";
 
 import styles from './Post.scss';
+import { Subtitle, Likes } from "./styles";
 
 export default function Post(props){
   return(
@@ -17,10 +18,8 @@ export default function Post(props){
           }}
           onRemove={props.onRemove}
         />
-        <br/>
-        <small>{(props?.post.subtitle) ?? "News' Subtitle"}</small>
-        <br/>
-        Likes: {props.post.likes ?? 0}
+        <Subtitle>{(props?.post.subtitle) ?? "News' Subtitle"}</Subtitle>
+        <Likes>Likes: {props.post.likes ?? 0}</Likes>
       </article>
       <br/>
     </React.Fragment>
