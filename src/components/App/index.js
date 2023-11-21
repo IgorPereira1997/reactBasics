@@ -4,7 +4,7 @@ import Post from './../Post';
 import Header from "./../Header";
 import { ThemeProvider } from "./../../context/ThemeContext";
 
-import styles from "./App.scss";
+import { Title } from "./styles";
 
 const category = "Weekly Posts"
 
@@ -48,7 +48,7 @@ function App(){
   return (
     <ThemeProvider>
       <Header>
-        <h2 className={styles.title}>{category} <br/><button onClick={handleRefresh}>Update</button></h2>
+        <Title as="h2">{category} <br/><button onClick={handleRefresh}>Update</button></Title>
       </Header>
 
       <hr/>
