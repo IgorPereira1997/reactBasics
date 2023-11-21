@@ -4,7 +4,7 @@ import { ThemeContext } from "./ThemeContext";
 
 export default function Button(props){
 
-  console.log({ThemeContext});
+  //console.log({ThemeContext});
 
   const { theme } = useContext(ThemeContext);
 

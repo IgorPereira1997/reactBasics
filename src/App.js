@@ -4,7 +4,7 @@ import Post from './Post';
 import Header from "./Header";
 import { ThemeProvider } from "./ThemeContext";
 
-import styles from "./App.css";
+import styles from "./App.scss";
 
 const category = "Weekly Posts"
 
@@ -13,11 +13,11 @@ function App(){
   //UseState handles the recreation of UI after a change in a variable that it
   //is controlling
   const [posts, setPosts] = useState([
-    {id: Math.random(), title: 'Title 01', subtitle: "Subtitle 01", likes: 20, read: false},
-    {id: Math.random(), title: 'Title 02', subtitle: "Subtitle 02", likes: 11, read: true},
-    {id: Math.random(), title: 'Title 03', subtitle: "Subtitle 03", likes: 67, read: false},
-    {id: Math.random(), title: 'Title 04', subtitle: "Subtitle 04", likes: 43, read: false},
-    {id: Math.random(), title: 'Title 05', subtitle: "Subtitle 05", likes: 55, read: false},
+    {id: Math.random(), title: 'Title 01', subtitle: "Subtitle 01", likes: 20, read: false, removed: false},
+    {id: Math.random(), title: 'Title 02', subtitle: "Subtitle 02", likes: 11, read: true, removed: true},
+    {id: Math.random(), title: 'Title 03', subtitle: "Subtitle 03", likes: 67, read: false, removed: false},
+    {id: Math.random(), title: 'Title 04', subtitle: "Subtitle 04", likes: 43, read: false, removed: false},
+    {id: Math.random(), title: 'Title 05', subtitle: "Subtitle 05", likes: 55, read: false, removed: false},
   ]);
 
   function handleRefresh(){
@@ -37,7 +37,11 @@ function App(){
   function handleRemovePost(postId){
     console.log("Removed post");
     setPosts((prevState) => (
-      prevState.filter(post => post.id !== postId)
+      prevState.map(post => post.id === postId
+        ? {...post, removed: true}
+        : post
+      )
+      //filter(post => post.id !== postId)
     ));
   }
 
@@ -52,7 +56,7 @@ function App(){
       {posts.map( post =>(
         <Post
           key={post.id}
-          onRemove={handleRemovePost}
+          onRemove={() => handleRemovePost(post.id)}
           post={post}
         />
       ))}
