@@ -42,7 +42,7 @@ function App(){
   return (
     <ThemeProvider>
       <Header title="New Major Title">
-        <h2>{category} <button onClick={handleRefresh}>Update</button></h2>
+        <h2>{category} <br/><button onClick={handleRefresh}>Update</button></h2>
       </Header>
 
       <hr/>
