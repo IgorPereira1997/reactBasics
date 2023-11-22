@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 
 import PostHeader from "./PostHeader";
 
-import styles from './Post.scss';
-import { Subtitle, Likes } from "./styles";
+import { Container, Subtitle, Likes } from "./styles";
 
 export default function Post(props){
   return(
     <React.Fragment>
-      <article className={`${styles.post} ${props.post.removed ? styles.deleted : ''}`}>
+      <Container $removed={props.post.removed }>
         <PostHeader
           post={{
             title: props.post.title,
@@ -20,7 +19,7 @@ export default function Post(props){
         />
         <Subtitle>{(props?.post.subtitle) ?? "News' Subtitle"}</Subtitle>
         <Likes>Likes: {props.post.likes ?? 0}</Likes>
-      </article>
+      </Container>
       <br/>
     </React.Fragment>
   );
