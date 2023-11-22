@@ -8,7 +8,7 @@ import { Container, Subtitle, Likes } from "./styles";
 export default function Post(props){
   return(
     <React.Fragment>
-      <Container $removed={props.post.removed }>
+      <Container $removed={props.post.removed}>
         <PostHeader
           post={{
             title: props.post.title,
